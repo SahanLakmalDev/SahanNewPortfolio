@@ -17,7 +17,28 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 
-const projects = [
+// 👉 Define the Project type
+type Project = {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  tags: string[];
+  features: string[];
+  technologies: {
+    frontend?: string[];
+    backend?: string[];
+    database?: string[];
+    cloud?: string[];
+    other?: string[];
+  };
+  github?: string;
+  liveDemo?: string;
+};
+
+// 👉 Projects array
+const projects: Project[] = [
   {
     id: 'mes-system',
     title: 'MES System',
@@ -34,13 +55,7 @@ const projects = [
       'Advanced reporting and data visualization',
     ],
     technologies: {
-      frontend: [
-        'Angular 14',
-        'TypeScript',
-        'RxJS',
-        'SCSS',
-        'Angular Material',
-      ],
+      frontend: ['Angular 14', 'TypeScript', 'RxJS', 'SCSS', 'Angular Material'],
       backend: ['ASP.NET Core', 'C#', 'Entity Framework Core'],
       cloud: ['Azure App Services', 'Azure Functions', 'Azure Logic Apps'],
       database: ['SQL Server', 'Azure SQL'],
@@ -95,8 +110,9 @@ const projects = [
   },
 ];
 
+// 👉 Component starts here
 export default function ProjectsSection() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -106,9 +122,7 @@ export default function ProjectsSection() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -117,13 +131,11 @@ export default function ProjectsSection() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
+      transition: { duration: 0.5 },
     },
   };
 
-  const openProjectDetails = (project: any) => {
+  const openProjectDetails = (project: Project) => {
     setSelectedProject(project);
     document.body.style.overflow = 'hidden';
   };
@@ -222,6 +234,7 @@ export default function ProjectsSection() {
             ))}
           </motion.div>
 
+          {/* Project Details Modal */}
           <AnimatePresence>
             {selectedProject && (
               <motion.div
@@ -286,6 +299,7 @@ export default function ProjectsSection() {
                       Technologies Used
                     </h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                      {/* Technologies Cards */}
                       {selectedProject.technologies.frontend && (
                         <div className="glass-card p-4">
                           <div className="flex items-center mb-2">
@@ -379,6 +393,7 @@ export default function ProjectsSection() {
                       )}
                     </div>
 
+                    {/* GitHub and Live Demo Buttons */}
                     <div className="flex justify-end gap-3 mt-6">
                       {selectedProject.github && (
                         <Link
@@ -414,4 +429,6 @@ export default function ProjectsSection() {
       </div>
     </section>
   );
+
+  
 }
