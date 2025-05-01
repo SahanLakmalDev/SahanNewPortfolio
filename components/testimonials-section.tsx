@@ -8,7 +8,7 @@ import { Quote } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    text: "Sahan is an exceptional developer with strong technical skills and a great eye for detail. His contributions to our MES system have significantly improved our production tracking capabilities.",
+    text: "Sahan is a dedicated and fast learner with a strong grasp of software development fundamentals. During his time as a trainee, he consistently demonstrated a keen ability to grasp new concepts quickly and apply them effectively in practical scenarios.",
     author: "Prasad Waduge",
     position: "CEO / Senior Lecturer, IJSE",
     contact: "prasad@ijse.lk | +94 772 252 985"

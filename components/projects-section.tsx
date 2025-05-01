@@ -45,7 +45,7 @@ const projects: Project[] = [
     subtitle: 'Manufacturing Execution System',
     description:
       'A comprehensive real-time manufacturing execution system for the apparel industry that tracks production from cutting to packing.',
-    image: 'https://images.pexels.com/photos/3912353/pexels-photo-3912353.jpeg',
+    image: 'https://www.pre-scient.com/wp-content/uploads/2023/09/introduction-to-manufacturing-execution-systems-mes-the-key-to-streamlining-production.webp',
     tags: ['Angular', 'ASP.NET Core', 'SQL Server', 'Azure', 'PWA'],
     features: [
       'Real-time production tracking with barcode scanning integration',
